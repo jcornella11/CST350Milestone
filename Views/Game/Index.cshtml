@@ -1,0 +1,42 @@
+﻿@model CST350Milestone.Models.BoardModel
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Index</title>
+    </head>
+    <body>
+        <div>
+            <h1>Welcome to MineSweeper!</h1>
+        @using(Html.BeginForm("HandleButtonClick", "Game"))
+        {
+            @for(int  i = 0; i < Model.Size; i++)
+            {
+                for(int j = 0; j < Model.Size; j++)
+                {
+                    <button type="submit" name="mine" value="@i,@j" style="height:50px;width:50px;vertical-align:top;">
+                        @if(Model.Grid[i,j].Visited == false)
+                        {
+
+                            //<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQIAAADDCAMAAABeUu/HAAAAA1BMVEX///+nxBvIAAAASElEQVR4nO3BAQ0AAADCoPdPbQ43oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIB7A8VJAAEcmy75AAAAAElFTkSuQmCC" width="50" height="50">
+                        }
+                        else
+                        {
+                            @Model.Grid[i,j].LiveNeighbors;
+                        }
+                    </button>
+                }
+                <br />
+            }
+        }
+        </div>
+        <label>Bombs Remaining: </label> @ViewBag.bombLabel <br />
+        <label>Moves: </label> @ViewBag.moves; <br/>
+        <label>Time Elapsed: </label> <br/> @ViewBag.timeElapsed
+        <label>Game Result: </label> @ViewBag.GameResult <br/>
+        <label>Score: </label> @ViewBag.Score
+
+
+    </body>
+</html>
