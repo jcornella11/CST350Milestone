@@ -23,7 +23,7 @@ namespace CST350Milestone.Controllers
 
         public IActionResult Index()
         {
-            string difficulty = "Medium";
+            string difficulty = "Easy";
 
             switch (difficulty)
             {
@@ -88,9 +88,9 @@ namespace CST350Milestone.Controllers
             else
             {
 
-                string moves = "Moves: " + board.moves.ToString();
+                string moves = board.moves.ToString();
 
-                string bombLabel = "Bombs Remaining: " + board.bombs.ToString();
+                string bombLabel = board.bombs.ToString();
 
                 watch.Stop();
 
