@@ -2,7 +2,7 @@
 {
     console.log("Page is ready");
 
-    $(".game-button").click(function (event) {
+    $(document).on("click", ".game-button", function (event) {
         event.preventDefault();
         console.log("Game Button was Clicked");
 
