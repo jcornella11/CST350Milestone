@@ -63,6 +63,19 @@ namespace CST350Milestone.Controllers
             return View("Index", board);
         }
 
+        public IActionResult ShowOneButton(int buttonXCordinate, int buttonYCordinate) 
+        {
+            int row = buttonXCordinate;
+            int col = buttonYCordinate;
+
+            board.floodFill(row, col);
+            checkMove(row, col);
+
+            //re-display button that was clicked
+            return PartialView();
+
+        }
+
         public void checkMove(int row, int col) 
         {
 
