@@ -13,6 +13,14 @@
         console.log("Button X Atribute: " + buttonX);
         console.log("Button Y Atribute: " + buttonY);
         doButtonUpdate(buttonX, buttonY, buttonCordinates);
+
+        for (let i = 0; i < 10; i++)
+        {
+            for (let j = 0; j < 10; j++)
+            {
+                doButtonUpdate(i, j);
+            }
+        }
     });
 });
 
