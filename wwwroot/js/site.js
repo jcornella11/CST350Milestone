@@ -31,7 +31,7 @@ function doButtonUpdate(buttonX, buttonY, buttonCordinates)
             success: function (data) {
                 console.log(data);
                 console.log(buttonCordinates);
-                $(":button").html(data);
+                $("#" + buttonCordinates).html(data);
             }
         });
 };

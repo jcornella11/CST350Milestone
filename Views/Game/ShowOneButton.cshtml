@@ -4,7 +4,7 @@
                         {
                             // Create empty button
                          
-                            <button id="@Model.Row,@Model.Column" class="game-button" type="submit" name="mine"  value="@Model.Row,@Model.Column" data-valuex="@Model.Row" data-valuey="@Model.Column" style="height:50px;width:50px;vertical-align:top;"
+                            <button id="@Model.Row@Model.Column" class="game-button" type="submit" name="mine"  value="@Model.Row@Model.Column" data-valuex="@Model.Row" data-valuey="@Model.Column" style="height:50px;width:50px;vertical-align:top;"
                             asp-controller="Game" asp-action="HandleButtonClick">
                             </button>
                             
@@ -13,7 +13,7 @@
                         {
                             
                             // Create button with black square ontop and disable
-                            <button id="@Model.Row,@Model.Column" class="game-button" type="submit" name="mine"  value="@Model.Row,@Model.Column" data-valuex="@Model.Row" data-valuey="@Model.Column" style="height:50px;width:50px;vertical-align:top;margin:0; padding:0" disabled asp-controller="Game" asp-action="HandleButtonClick">
+                            <button id="@Model.Row@Model.Column" class="game-button" type="submit" name="mine"  value="@Model.Row@Model.Column" data-valuex="@Model.Row" data-valuey="@Model.Column" style="height:50px;width:50px;vertical-align:top;margin:0; padding:0" disabled asp-controller="Game" asp-action="HandleButtonClick">
                             <img src="https://u-mercari-images.mercdn.net/photos/m29988681083_1.jpg?width=1024&height=1024&format=pjpg&auto=webp&fit=crop&_=1594191996" width="46" height="46" style="margin:0; padding:0">
                             </button>
                             
@@ -22,7 +22,7 @@
                         {
                            
                             // Create empty button
-                            <button id="@Model.Row,@Model.Column" class="game-button" type="submit" name="mine"  value="@Model.Row,@Model.Column" data-valuex="@Model.Row" data-valuey="@Model.Column" style="height:50px;width:50px;vertical-align:top;" asp-controller="Game" asp-action="HandleButtonClick">
+                            <button id="@Model.Row@Model.Column" class="game-button" type="submit" name="mine"  value="@Model.Row@Model.Column" data-valuex="@Model.Row" data-valuey="@Model.Column" style="height:50px;width:50px;vertical-align:top;" asp-controller="Game" asp-action="HandleButtonClick">
                             </button>
                             
                         }
@@ -30,7 +30,7 @@
                         {
                             
                             // Create button with live neighbors on and disable
-                            <button id="@Model.Row,@Model.Column" class="game-button" type="submit" name="mine"  value="@Model.Row,@Model.Column" data-valuex="@Model.Row" data-valuey="@Model.Column" style="height:50px;width:50px;vertical-align:top;" disabled asp-controller="Game" asp-action="HandleButtonClick">
+                            <button id="@Model.Row@Model.Column" class="game-button" type="submit" name="mine"  value="@Model.Row@Model.Column" data-valuex="@Model.Row" data-valuey="@Model.Column" style="height:50px;width:50px;vertical-align:top;" disabled asp-controller="Game" asp-action="HandleButtonClick">
                             @Model.LiveNeighbors
                             </button>
                             
@@ -38,6 +38,6 @@
                         else
                         {
                             // Create empty button
-                            <button id="@Model.Row,@Model.Column" class="game-button" type="submit" name="mine"  value="@Model.Row,@Model.Column" data-valuex="@Model.Row" data-valuey="@Model.Column" style="height:50px;width:50px;vertical-align:top;" asp-controller="Game" asp-action="HandleButtonClick">
+                            <button id="@Model.Row@Model.Column" class="game-button" type="submit" name="mine"  value="@Model.Row@Model.Column" data-valuex="@Model.Row" data-valuey="@Model.Column" style="height:50px;width:50px;vertical-align:top;" asp-controller="Game" asp-action="HandleButtonClick">
                             </button>
                         }
