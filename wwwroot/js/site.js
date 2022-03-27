@@ -30,6 +30,7 @@ function doButtonUpdate(buttonX, buttonY)
             },
             success: function (data) {
                 console.log(data);
+                $("#" + buttonX + "," + buttonY).html(data);
             }
         });
 };
