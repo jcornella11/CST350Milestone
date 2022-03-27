@@ -12,6 +12,7 @@
         console.log("Button Number " + buttonCordinates + " was clicked");
         console.log("Button X Atribute: " + buttonX);
         console.log("Button Y Atribute: " + buttonY);
+        doButtonUpdate(buttonX, buttonY);
     });
 });
 
@@ -27,9 +28,8 @@ function doButtonUpdate(buttonX, buttonY)
                 "buttonXCordinate": buttonX,
                 "buttonYCordinate": buttonY
             },
-            success: function (data)
-            {
+            success: function (data) {
                 console.log(data);
             }
-        })
-}
+        });
+};

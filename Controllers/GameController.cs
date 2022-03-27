@@ -71,8 +71,10 @@ namespace CST350Milestone.Controllers
             board.floodFill(row, col);
             checkMove(row, col);
 
+            CellModel currentCell = board.Grid[row, col];
+
             //re-display button that was clicked
-            return PartialView();
+            return PartialView(currentCell);
 
         }
 
