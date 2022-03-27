@@ -12,11 +12,11 @@
         console.log("Button Number " + buttonCordinates + " was clicked");
         console.log("Button X Atribute: " + buttonX);
         console.log("Button Y Atribute: " + buttonY);
-        doButtonUpdate(buttonX, buttonY);
+        doButtonUpdate(buttonX, buttonY, buttonCordinates);
     });
 });
 
-function doButtonUpdate(buttonX, buttonY)
+function doButtonUpdate(buttonX, buttonY, buttonCordinates)
 {
     $.ajax(
         {
@@ -30,7 +30,8 @@ function doButtonUpdate(buttonX, buttonY)
             },
             success: function (data) {
                 console.log(data);
-                $("#" + buttonX + "," + buttonY).html(data);
+                console.log(buttonCordinates);
+                $(":button").html(data);
             }
         });
 };

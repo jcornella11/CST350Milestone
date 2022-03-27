@@ -19,13 +19,15 @@
                 for(int j = 0; j < Model.Size; j++)
                 {
                             // Create empty button
-                            <button class="game-button" type="submit" name="mine" id="@i,@j" value="@i,@j" data-valuex="@i" data-valuey="@j" style="height:50px;width:50px;vertical-align:top;" asp-controller="Game" asp-action="HandleButtonClick">
+                            <button id="@i,@j" class="game-button" type="submit" name="mine"  value="@i,@j" data-valuex="@i" data-valuey="@j" style="height:50px;width:50px;vertical-align:top;" asp-controller="Game" asp-action="HandleButtonClick">
                             </button>
                 }
                 <br />
             }
          </form>  
         
+        </div>
+        <div id="300">
         </div>
         @ViewBag.bombLabel <br />
         @ViewBag.moves; <br/>
