@@ -9,58 +9,27 @@
     <body>
         <div>
             <h1>Welcome to MineSweeper!</h1>
-            <p>Start time:  @DateTime.Now</p>
+            <p>Start time: @DateTime.Now</p>
         </div>
         <div>
-            <p>Current time:  @DateTime.Now</p>
-        @using(Html.BeginForm("HandleButtonClick", "Game"))
-        {
+            <p>Current time: @DateTime.Now</p>
+       <form>
             @for(int  i = 0; i < Model.Size; i++)
             {
                 for(int j = 0; j < Model.Size; j++)
                 {
-                    
-                        @if(Model.Grid[i,j].Visited == false)
-                        {
                             // Create empty button
-                            <button type="submit" name="mine" value="@i,@j" style="height:50px;width:50px;vertical-align:top;">
+                            <button id="@i@j" class="game-button" type="submit" name="mine"  value="@i@j" data-valuex="@i" data-valuey="@j" style="height:50px;width:50px;vertical-align:top;" asp-controller="Game" asp-action="HandleButtonClick" onmousedown="right_click(this.id)">
                             </button>
-                        }
-                        else if(Model.Grid[i,j].Visited == true && Model.Grid[i,j].LiveNeighbors == 0)
-                        {
-                            // Create button with black square ontop and disable
-                            <button type="submit" name="mine" value="@i,@j" style="height:50px;width:50px;vertical-align:top;margin:0; padding:0" disabled>
-
-                            <img src="https://u-mercari-images.mercdn.net/photos/m29988681083_1.jpg?width=1024&height=1024&format=pjpg&auto=webp&fit=crop&_=1594191996" width="46" height="46" style="margin:0; padding:0">
-                            
-                            </button>
-                        }
-                        else if(Model.Grid[i,j].LiveNeighbors == 9)
-                        {
-                            // Create empty button
-                            <button type="submit" name="mine" value="@i,@j" style="height:50px;width:50px;vertical-align:top;">
-                            </button>
-                        }
-                        else if(Model.Grid[i,j].Visited == true && Model.Grid[i,j].LiveNeighbors < 9)
-                        {
-                            // Create button with live neighbors on and disable
-                            <button type="submit" name="mine" value="@i,@j" style="height:50px;width:50px;vertical-align:top;" disabled>
-                            @Model.Grid[i,j].LiveNeighbors
-                            </button>
-                        }
-                        else
-                        {
-                            // Create empty button
-                            <button type="submit" name="mine" value="@i,@j" style="height:50px;width:50px;vertical-align:top;">
-                            </button>
-                        }
                 }
                 <br />
             }
-        }
+         </form>  
+        
         </div>
+        
         @ViewBag.bombLabel <br />
-        @ViewBag.moves; <br/>
+        @ViewBag.moves <br/>
         <label>Time Elapsed: </label> <br/> @ViewBag.timeElapsed
         <label>Game Result: </label> @ViewBag.GameResult <br/>
         <label>Score: </label> @ViewBag.Score

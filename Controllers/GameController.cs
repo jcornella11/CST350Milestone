@@ -17,7 +17,7 @@ namespace CST350Milestone.Controllers
 
         public GameController()
         {
-            this.playerName= "Test";
+            this.playerName = "Test";
             this.Difficulty = "Medium";
         }
 
@@ -63,7 +63,30 @@ namespace CST350Milestone.Controllers
             return View("Index", board);
         }
 
-        public void checkMove(int row, int col) 
+        public IActionResult ShowOneButton(int buttonXCordinate, int buttonYCordinate)
+        {
+            int row = buttonXCordinate;
+            int col = buttonYCordinate;
+
+            board.floodFill(row, col);
+            checkMove(row, col);
+
+            CellModel currentCell = board.Grid[row, col];
+
+            return PartialView(currentCell);
+        }
+
+        public IActionResult ShowAllButtons(int buttonXCordinate, int buttonYCordinate)
+        {
+            int row = buttonXCordinate;
+            int col = buttonYCordinate;
+
+            CellModel currentCell = board.Grid[row, col];
+
+            return PartialView(currentCell);
+        }
+
+        public void checkMove(int row, int col)
         {
 
             if (!board.Grid[row, col].Live)
@@ -105,14 +128,14 @@ namespace CST350Milestone.Controllers
             }
         }
 
-        private void victory() 
+        private void victory()
         {
             watch.Stop();
             TimeSpan ts = watch.Elapsed;
             ViewBag.GameResult = string.Format("You Win!\nTime Elapsed: {0}:{1}\nScore: {2}", ts.Minutes, ts.Seconds, calculateScore(ts), "You Win!");
         }
 
-        private void loss() 
+        private void loss()
         {
             watch.Stop();
             ViewBag.GameResult = "You Lose and Your Score is 0";
@@ -161,11 +184,5 @@ namespace CST350Milestone.Controllers
                 }
             }
         }
-
-
-
-
-
-
     }
 }
