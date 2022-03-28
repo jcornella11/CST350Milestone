@@ -32,6 +32,33 @@ function doButtonUpdate(buttonX, buttonY, buttonCordinates)
                 console.log(data);
                 console.log(buttonCordinates);
                 $("#" + buttonCordinates).html(data);
+                updateAllButtons();
             }
         });
+    
+};
+
+function updateAllButtons()
+{
+    for (let i = 0; i < 10; i++)
+    {
+        for (let j = 0; j < 10; j++)
+        {
+            $.ajax({
+                datatype: "json",
+                method: 'POST',
+                url: 'game/ShowAllButtons',
+                data:
+                {
+                    "buttonXCordinate": i,
+                    "buttonYCordinate": j
+                },
+                success: function (data) {
+                    console.log(data);
+                    $("#" + i + j).html(data);
+                }
+
+            });
+        }
+    }
 };

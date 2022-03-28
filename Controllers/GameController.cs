@@ -73,9 +73,17 @@ namespace CST350Milestone.Controllers
 
             CellModel currentCell = board.Grid[row, col];
 
-            //re-display button that was clicked
             return PartialView(currentCell);
+        }
 
+        public IActionResult ShowAllButtons(int buttonXCordinate, int buttonYCordinate) 
+        {
+            int row = buttonXCordinate;
+            int col = buttonYCordinate;
+
+            CellModel currentCell = board.Grid[row, col];
+
+            return PartialView(currentCell);
         }
 
         public void checkMove(int row, int col) 
