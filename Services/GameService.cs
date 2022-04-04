@@ -11,6 +11,9 @@ namespace CST350Milestone.Services
 
         public string playerName;
         public string Difficulty;
+        string moves = "";
+        string bombLabel = "";
+        string GameResult = "";
 
         Stopwatch watch = new Stopwatch();
 
@@ -46,9 +49,9 @@ namespace CST350Milestone.Services
 
             if (!board.Grid[row, col].Live)
             {
-                string moves = "Moves: " + board.moves.ToString();
+                this.moves = "Moves: " + board.moves.ToString();
 
-                string bombLabel = "Bombs Remaining: " + board.bombs.ToString();
+                this.bombLabel = "Bombs Remaining: " + board.bombs.ToString();
 
                 if (board.moves == board.Grid.Length - board.bombs)
                 {
@@ -58,9 +61,9 @@ namespace CST350Milestone.Services
             else
             {
 
-                string moves = board.moves.ToString();
+                this.moves = board.moves.ToString();
 
-                string bombLabel = board.bombs.ToString();
+                this.bombLabel = board.bombs.ToString();
 
                 loss();
 
@@ -71,13 +74,13 @@ namespace CST350Milestone.Services
         {
             watch.Stop();
             TimeSpan ts = watch.Elapsed;
-            string GameResult = string.Format("You Win!\nTime Elapsed: {0}:{1}\nScore: {2}", ts.Minutes, ts.Seconds, calculateScore(ts), "You Win!");
+            this.GameResult = string.Format("You Win!\nTime Elapsed: {0}:{1}\nScore: {2}", ts.Minutes, ts.Seconds, calculateScore(ts), "You Win!");
         }
 
         private void loss()
         {
             watch.Stop();
-            string GameResult = "You Lose and Your Score is 0";
+            this.GameResult = "You Lose and Your Score is 0";
         }
 
         public int calculateScore(TimeSpan ts)
