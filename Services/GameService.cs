@@ -5,7 +5,7 @@ namespace CST350Milestone.Services
 {
     public class GameService
     {
-        public BoardModel board;
+        public BoardModel board = new BoardModel(10);
 
         int bombs;
 
@@ -16,7 +16,6 @@ namespace CST350Milestone.Services
 
         public GameService()
         {
-            board = new BoardModel(10);
             this.playerName = "Test";
             this.Difficulty = "Medium";
             bombs = (int)board.bombs;

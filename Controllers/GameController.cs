@@ -7,11 +7,11 @@ namespace CST350Milestone.Controllers
 {
     public class GameController : Controller
     {
-        GameService game;
+        public static GameService game = new GameService();
 
         public GameController()
         {
-            game = new GameService();
+
         }
 
         public IActionResult Index()
