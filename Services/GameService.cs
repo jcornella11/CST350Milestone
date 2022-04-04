@@ -53,7 +53,6 @@ namespace CST350Milestone.Services
                 if (board.moves == board.Grid.Length - board.bombs)
                 {
                     victory();
-
                 }
             }
             else
@@ -62,8 +61,6 @@ namespace CST350Milestone.Services
                 string moves = board.moves.ToString();
 
                 string bombLabel = board.bombs.ToString();
-
-                watch.Stop();
 
                 loss();
 

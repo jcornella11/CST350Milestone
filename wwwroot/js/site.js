@@ -38,6 +38,7 @@ function doButtonUpdate(buttonX, buttonY, buttonCordinates)
     
 };
 
+
 function updateAllButtons()
 {
     for (let i = 0; i < 10; i++)
@@ -62,3 +63,5 @@ function updateAllButtons()
         }
     }
 };
+
+function getGameData() { };
