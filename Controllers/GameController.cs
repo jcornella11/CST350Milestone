@@ -54,5 +54,10 @@ namespace CST350Milestone.Controllers
 
             return PartialView(currentCell);
         }
+
+        public IActionResult ShowGameData() 
+        {
+            return PartialView(game);
+        }
     }
 }

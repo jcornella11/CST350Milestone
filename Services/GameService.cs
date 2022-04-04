@@ -11,9 +11,9 @@ namespace CST350Milestone.Services
 
         public string playerName;
         public string Difficulty;
-        string moves = "";
-        string bombLabel = "";
-        string GameResult = "";
+        public string moves = "";
+        public string bombLabel = "";
+        public string GameResult = "";
 
         Stopwatch watch = new Stopwatch();
 

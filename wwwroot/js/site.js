@@ -13,6 +13,7 @@
         console.log("Button X Atribute: " + buttonX);
         console.log("Button Y Atribute: " + buttonY);
         doButtonUpdate(buttonX, buttonY, buttonCordinates);
+        getGameTableData();
     });
 });
 
@@ -64,4 +65,18 @@ function updateAllButtons()
     }
 };
 
-function getGameData() { };
+function getGameTableData()
+{
+    $.ajax(
+        {
+            datatype: "json",
+            method: 'POST',
+            url: 'game/ShowGameData',
+            data:
+            {},
+            success: function (data) {
+                console.log(data);
+                $("#gameTable").html(data);
+            }
+        });
+};
