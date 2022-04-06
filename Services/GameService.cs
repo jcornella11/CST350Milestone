@@ -60,6 +60,7 @@ namespace CST350Milestone.Services
             }
             else
             {
+                board.Grid[row, col].Visited = true;
 
                 this.moves = board.moves.ToString();
 

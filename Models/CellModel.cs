@@ -6,6 +6,7 @@
         public int Column { get; set; }
         public bool Visited { get; set; }
         public bool Live { get; set; }
+        public bool flagged { get; set; }
         public int LiveNeighbors { get; set; }
 
         public CellModel(int row, int column, bool visited, bool live, int liveNeighbors)

@@ -62,6 +62,8 @@ namespace CST350Milestone.Controllers
             int row = buttonXCordinate;
             int col = buttonYCordinate;
 
+            game.board.Grid[row, col].flagged = true;
+
             CellModel currentCell = game.board.Grid[row, col];
 
             return PartialView(currentCell);

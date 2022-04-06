@@ -1,44 +1,60 @@
 ﻿@model CST350Milestone.Models.CellModel
 
-                        @if(@Model.Visited == false)
-                        {
-                            // Create empty button
-                         
-                            <button id="@Model.Row@Model.Column" class="game-button" type="submit" name="mine"  value="@Model.Row@Model.Column" data-valuex="@Model.Row" data-valuey="@Model.Column" style="height:50px;width:50px;vertical-align:top;"
+@if (@Model.Visited == false)
+{
+    // Create empty button
+
+    <button id="@Model.Row@Model.Column" class="game-button" type="submit" name="mine"  value="@Model.Row@Model.Column" data-valuex="@Model.Row" data-valuey="@Model.Column" style="height:50px;width:50px;vertical-align:top;"
                             asp-controller="Game" asp-action="HandleButtonClick">
-                            </button>
-                            
-                        }
-                        else if(@Model.Visited == true && @Model.LiveNeighbors == 0)
-                        {
-                            
-                            // Create button with black square ontop and disable
-                            <button id="@Model.Row@Model.Column" class="game-button" type="submit" name="mine"  value="@Model.Row@Model.Column" data-valuex="@Model.Row" data-valuey="@Model.Column" style="height:50px;width:50px;vertical-align:top;margin:0; padding:0" disabled asp-controller="Game" asp-action="HandleButtonClick">
-                            <img src="https://u-mercari-images.mercdn.net/photos/m29988681083_1.jpg?width=1024&height=1024&format=pjpg&auto=webp&fit=crop&_=1594191996" width="46" height="46" style="margin:0; padding:0">
-                            </button>
-                            
-                        }
-                        else if(@Model.LiveNeighbors == 9)
-                        {
-                           
-                            // Create empty button
-                            <button id="@Model.Row@Model.Column" class="game-button" type="submit" name="mine"  value="@Model.Row@Model.Column" data-valuex="@Model.Row" data-valuey="@Model.Column" style="height:50px;width:50px;vertical-align:top;" asp-controller="Game" asp-action="HandleButtonClick">
-                            </button>
-                            
-                        }
-                        else if(@Model.Visited == true && Model.LiveNeighbors < 9)
-                        {
-                            
-                            // Create button with live neighbors on and disable
-                            <button id="@Model.Row@Model.Column" class="game-button" type="submit" name="mine"  value="@Model.Row@Model.Column" data-valuex="@Model.Row" data-valuey="@Model.Column" style="height:50px;width:50px;vertical-align:top;" disabled asp-controller="Game" asp-action="HandleButtonClick">
-                            @Model.LiveNeighbors
-                            </button>
-                            
-                        }
-                        else
-                        {
-                            // Create empty button
-                            <button id="@Model.Row@Model.Column" class="game-button" type="submit" name="mine"  value="@Model.Row@Model.Column" data-valuex="@Model.Row" data-valuey="@Model.Column" style="height:50px;width:50px;vertical-align:top;" asp-controller="Game" asp-action="HandleButtonClick">
-                            </button>
-                        }
+    </button>
+
+}
+else if (@Model.Visited == true && @Model.LiveNeighbors == 0)
+{
+
+    // Create button with black square ontop and disable
+    <button id="@Model.Row@Model.Column" class="game-button" type="submit" name="mine"  value="@Model.Row@Model.Column" data-valuex="@Model.Row" data-valuey="@Model.Column" style="height:50px;width:50px;vertical-align:top;margin:0; padding:0" disabled asp-controller="Game" asp-action="HandleButtonClick">
+        <img src="https://u-mercari-images.mercdn.net/photos/m29988681083_1.jpg?width=1024&height=1024&format=pjpg&auto=webp&fit=crop&_=1594191996" width="46" height="46" style="margin:0; padding:0">
+    </button>
+
+}
+else if (@Model.LiveNeighbors == 9)
+{
+
+    // Create empty button
+    <button id="@Model.Row@Model.Column" class="game-button" type="submit" name="mine"  value="@Model.Row@Model.Column" data-valuex="@Model.Row" data-valuey="@Model.Column" style="height:50px;width:50px;vertical-align:top;" asp-controller="Game" asp-action="HandleButtonClick">
+    </button>
+
+}
+else if (@Model.LiveNeighbors == 9 && Model.Visited == true)
+{
+
+    // Create a Bomb Button
+    <button id="@Model.Row@Model.Column" class="game-button" type="submit" name="mine"  value="@Model.Row@Model.Column" data-valuex="@Model.Row" data-valuey="@Model.Column" style="height:50px;width:50px;vertical-align:top;" asp-controller="Game" asp-action="HandleButtonClick">
+         💣
+    </button>
+
+}
+else if (@Model.Visited == true && Model.LiveNeighbors < 9)
+{
+
+    // Create button with live neighbors on and disable
+    <button id="@Model.Row@Model.Column" class="game-button" type="submit" name="mine"  value="@Model.Row@Model.Column" data-valuex="@Model.Row" data-valuey="@Model.Column" style="height:50px;width:50px;vertical-align:top;" disabled asp-controller="Game" asp-action="HandleButtonClick">
+        @Model.LiveNeighbors
+    </button>
+
+}
+else if (@Model.flagged == true)
+{
+<button id="@Model.Row@Model.Column" class="game-button" type="submit" name="mine"  value="@Model.Row@Model.Column" data-valuex="@Model.Row" data-valuey="@Model.Column" style="height:50px;width:50px;vertical-align:top;" asp-controller="Game" asp-action="HandleButtonClick">
+                                🚩
+</button>    
+
+}
+else
+{
+    // Create empty button
+    <button id="@Model.Row@Model.Column" class="game-button" type="submit" name="mine"  value="@Model.Row@Model.Column" data-valuex="@Model.Row" data-valuey="@Model.Column" style="height:50px;width:50px;vertical-align:top;" asp-controller="Game" asp-action="HandleButtonClick">
+    </button>
+}
 
