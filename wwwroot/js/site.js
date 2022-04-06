@@ -6,7 +6,8 @@
         var buttonCordinates = $(this).val();
         var buttonX = $(this).data("valuex");
         var buttonY = $(this).data("valuey");
-        
+
+        updateAllButtons();
         doButtonUpdate(buttonX, buttonY, buttonCordinates);
         getGameTableData();
     });
@@ -19,7 +20,9 @@
         var buttonY = $(this).data("valuey");
         console.log(buttonX);
         console.log(buttonY);
+        updateAllButtons();
         doButtonRightClick(buttonX, buttonY, buttonCordinates);
+        
     });
 });
 
@@ -37,9 +40,9 @@ function doButtonUpdate(buttonX, buttonY, buttonCordinates)
                 "buttonYCordinate": buttonY
             },
             success: function (data) {
+
                 
                 $("#" + buttonCordinates).html(data);
-                updateAllButtons();
             }
         });
 };
@@ -59,9 +62,8 @@ function doButtonRightClick(buttonX, buttonY, buttonCordinates)
             },
             success: function (data) {
 
+                
                 $("#" + buttonCordinates).html(data);
-                console.log(data);
-                updateAllButtons();
             }
         });
 }
