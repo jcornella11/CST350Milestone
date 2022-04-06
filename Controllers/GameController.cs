@@ -55,6 +55,19 @@ namespace CST350Milestone.Controllers
             return PartialView(currentCell);
         }
 
+        public IActionResult doButtonRightClick(int buttonXCordinate, int buttonYCordinate)
+        {
+            //Run Any Code for the Right Click Here
+
+            int row = buttonXCordinate;
+            int col = buttonYCordinate;
+
+            CellModel currentCell = game.board.Grid[row, col];
+
+            return PartialView(currentCell);
+
+        }
+
         public IActionResult ShowGameData() 
         {
             return PartialView(game);

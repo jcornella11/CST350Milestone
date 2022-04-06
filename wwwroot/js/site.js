@@ -1,21 +1,28 @@
 ﻿$(function ()
 {
-    console.log("Page is ready");
-
     $(document).on("click", ".game-button", function (event) {
         event.preventDefault();
-        console.log("Game Button was Clicked");
+        
+        var buttonCordinates = $(this).val();
+        var buttonX = $(this).data("valuex");
+        var buttonY = $(this).data("valuey");
+        
+        doButtonUpdate(buttonX, buttonY, buttonCordinates);
+        getGameTableData();
+    });
+
+    $(document).on("contextmenu", ".game-button", function (event) {
+        event.preventDefault();
 
         var buttonCordinates = $(this).val();
         var buttonX = $(this).data("valuex");
         var buttonY = $(this).data("valuey");
-        console.log("Button Number " + buttonCordinates + " was clicked");
-        console.log("Button X Atribute: " + buttonX);
-        console.log("Button Y Atribute: " + buttonY);
-        doButtonUpdate(buttonX, buttonY, buttonCordinates);
-        getGameTableData();
+        console.log(buttonX);
+        console.log(buttonY);
+        doButtonRightClick(buttonX, buttonY, buttonCordinates);
     });
 });
+
 
 function doButtonUpdate(buttonX, buttonY, buttonCordinates)
 {
@@ -30,15 +37,34 @@ function doButtonUpdate(buttonX, buttonY, buttonCordinates)
                 "buttonYCordinate": buttonY
             },
             success: function (data) {
-                console.log(data);
-                console.log(buttonCordinates);
+                
                 $("#" + buttonCordinates).html(data);
                 updateAllButtons();
             }
         });
-    
 };
 
+
+function doButtonRightClick(buttonX, buttonY, buttonCordinates)
+{
+    $.ajax(
+        {
+            datatype: "json",
+            method: 'POST',
+            url: 'game/doButtonRightClick',
+            data:
+            {
+                "buttonXCordinate": buttonX,
+                "buttonYCordinate": buttonY
+            },
+            success: function (data) {
+
+                $("#" + buttonCordinates).html(data);
+                console.log(data);
+                updateAllButtons();
+            }
+        });
+}
 
 function updateAllButtons()
 {
@@ -55,8 +81,8 @@ function updateAllButtons()
                     "buttonXCordinate": i,
                     "buttonYCordinate": j
                 },
-                success: function (data) {
-                    console.log(data);
+                success: function (data)
+                {
                     $("#" + i + j).html(data);
                 }
 
@@ -75,7 +101,6 @@ function getGameTableData()
             data:
             {},
             success: function (data) {
-                console.log(data);
                 $("#gameTable").html(data);
             }
         });
