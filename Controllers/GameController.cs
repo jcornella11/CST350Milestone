@@ -19,7 +19,6 @@ namespace CST350Milestone.Controllers
             return View("Index", game.board);
         }
 
-       
         public IActionResult ShowOneButton(int buttonXCordinate, int buttonYCordinate) 
         {
             int row = buttonXCordinate;
@@ -40,17 +39,15 @@ namespace CST350Milestone.Controllers
 
         public IActionResult doButtonRightClick(int buttonXCordinate, int buttonYCordinate)
         {
-            //Run Any Code for the Right Click Here
-
+            
             int row = buttonXCordinate;
             int col = buttonYCordinate;
 
-            game.board.Grid[row, col].flagged = true;
+            game.flagSquare(row, col);
 
             CellModel currentCell = game.board.Grid[row, col];
 
             return PartialView(currentCell);
-
         }
 
         public IActionResult ShowGameData() 

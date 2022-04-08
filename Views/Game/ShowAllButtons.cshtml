@@ -4,9 +4,19 @@
             {
                 for(int j = 0; j < Model.Size; j++)
                 {
+                        //Sorted Based on Order of Importance
+
+                         //If the Square has been Flagged
+                        @if (@Model.Grid[@i, @j].flagged == true)
+                                {
+                                    //Create a Flag Button
+                                    <button id="@Model.Grid[@i, @j].Row@Model.Grid[@i, @j].Column" class="game-button" type="submit" name="mine"  value="@Model.Grid[@i, @j].Row@Model.Grid[@i, @j].Column" data-valuex="@Model.Grid[@i, @j].Row" data-valuey="@Model.Grid[@i, @j].Column" style="height:50px;width:50px;vertical-align:top;" asp-controller="Game">
+                                    🚩
+                                    </button>    
+                                }
 
                         //If Square has Not Been Visited
-                        @if (@Model.Grid[@i, @j].Visited == false)
+                        else if (@Model.Grid[@i, @j].Visited == false)
                                 {
                                     // Create empty button
                                         <button id="@Model.Grid[@i, @j].Row@Model.Grid[@i, @j].Column" class="game-button" type="submit" name="mine"  value="@Model.Grid[@i, @j].Row@Model.Grid[@i, @j].Column" data-valuex="@Model.Grid[@i, @j].Row" data-valuey="@Model.Grid[@i, @j].Column" style="height:50px;width:50px;vertical-align:top;"
@@ -42,15 +52,7 @@
                                     </button>
                                 }
 
-                        //If the Square has been Flagged
-                        else if (@Model.Grid[@i, @j].flagged == true)
-                                {
-                                    //Create a Flag Button
-                                    <button id="@Model.Grid[@i, @j].Row@Model.Grid[@i, @j].Column" class="game-button" type="submit" name="mine"  value="@Model.Grid[@i, @j].Row@Model.Grid[@i, @j].Column" data-valuex="@Model.Grid[@i, @j].Row" data-valuey="@Model.Grid[@i, @j].Column" style="height:50px;width:50px;vertical-align:top;" asp-controller="Game">
-                                    🚩
-                                    </button>    
-                                }
-
+                        //Fallthrough
                         else
                                 {
                                     // Create empty button

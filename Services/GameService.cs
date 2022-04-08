@@ -20,7 +20,7 @@ namespace CST350Milestone.Services
         public GameService()
         {
             this.playerName = "Test";
-            this.Difficulty = "Medium";
+            this.Difficulty = "Easy";
             bombs = (int)board.bombs;
 
             switch (Difficulty)
@@ -43,6 +43,12 @@ namespace CST350Milestone.Services
 
             watch.Start();
         }
+
+        public void flagSquare(int row, int col) 
+        {
+            board.Grid[row, col].flagged = true;
+        }
+
 
         public void checkMove(int row, int col)
         {

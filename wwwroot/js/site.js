@@ -1,8 +1,9 @@
 ﻿$(function ()
 {
-    //Load the Blank Game Board
+    //Load the Inital Blank Game Board
     updateAllButtons();
 
+    //Left Click
     $(document).on("click", ".game-button", function (event) {
         event.preventDefault();
         
@@ -10,22 +11,25 @@
         var buttonX = $(this).data("valuex");
         var buttonY = $(this).data("valuey");
 
-        updateAllButtons();
+        
         doButtonUpdate(buttonX, buttonY, buttonCordinates);
+        updateAllButtons();
         getGameTableData();
     });
 
+    //Right Click
     $(document).on("contextmenu", ".game-button", function (event) {
         event.preventDefault();
 
         var buttonCordinates = $(this).val();
         var buttonX = $(this).data("valuex");
         var buttonY = $(this).data("valuey");
+
         console.log(buttonX);
         console.log(buttonY);
-        updateAllButtons();
-        doButtonRightClick(buttonX, buttonY, buttonCordinates);
         
+        doButtonRightClick(buttonX, buttonY, buttonCordinates);
+        updateAllButtons();
     });
 });
 
@@ -43,8 +47,6 @@ function doButtonUpdate(buttonX, buttonY, buttonCordinates)
                 "buttonYCordinate": buttonY
             },
             success: function (data) {
-
-                
                 $("#" + buttonCordinates).html(data);
             }
         });
@@ -64,8 +66,6 @@ function doButtonRightClick(buttonX, buttonY, buttonCordinates)
                 "buttonYCordinate": buttonY
             },
             success: function (data) {
-
-                
                 $("#" + buttonCordinates).html(data);
             }
         });
