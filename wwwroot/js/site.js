@@ -10,7 +10,7 @@
         var buttonX = $(this).data("valuex");
         var buttonY = $(this).data("valuey");
 
-        //updateAllButtons();
+        updateAllButtons();
         doButtonUpdate(buttonX, buttonY, buttonCordinates);
         getGameTableData();
     });
@@ -23,7 +23,7 @@
         var buttonY = $(this).data("valuey");
         console.log(buttonX);
         console.log(buttonY);
-        //updateAllButtons();
+        updateAllButtons();
         doButtonRightClick(buttonX, buttonY, buttonCordinates);
         
     });
