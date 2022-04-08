@@ -7,11 +7,9 @@ namespace CST350Milestone.Services
     {
         public BoardModel board = new BoardModel(10);
 
-        int bombs;
-
         public string playerName;
         public string Difficulty;
-        public string moves = "";
+        public string moveLabel = "";
         public string bombLabel = "";
         public string GameResult = "";
 
@@ -21,8 +19,8 @@ namespace CST350Milestone.Services
         {
             this.playerName = "Test";
             this.Difficulty = "Easy";
-            bombs = (int)board.bombs;
-
+           
+            //Setup The Game Based on Difficulty
             switch (Difficulty)
             {
                 case "Easy":
@@ -41,21 +39,52 @@ namespace CST350Milestone.Services
                     break;
             }
 
+            //this.bombs = (int)board.bombs;
+            this.bombLabel = "Bombs Remaining: " + board.bombs.ToString();
+
             watch.Start();
         }
 
         public void flagSquare(int row, int col) 
         {
-            board.Grid[row, col].flagged = true;
-        }
+            //If its not already flagged flag it
+            if (board.Grid[row, col].flagged == false)
+            {
+                //Sets the Square Flagged to True
+                board.Grid[row, col].flagged = true;
 
+                //If the Square is a Bomb Subtract it from the Total Bomb Count
+                if (board.Grid[row, col].Live == true)
+                {
+                    this.board.bombs = board.bombs - 1;
+
+                    this.bombLabel = "Bombs Remaining: " + board.bombs.ToString();
+                }
+                
+            }
+
+            //If it is flagged already, remove the flag
+            else 
+            {
+                board.Grid[row, col].flagged = false;
+
+                if (board.Grid[row, col].Live == true)
+                {
+                    this.board.bombs = board.bombs + 1;
+
+                    this.bombLabel = "Bombs Remaining: " + board.bombs.ToString();
+                }
+                
+            }
+
+        }
 
         public void checkMove(int row, int col)
         {
 
             if (!board.Grid[row, col].Live)
             {
-                this.moves = "Moves: " + board.moves.ToString();
+                this.moveLabel = "Moves: " + board.moves.ToString();
 
                 this.bombLabel = "Bombs Remaining: " + board.bombs.ToString();
 
@@ -68,12 +97,11 @@ namespace CST350Milestone.Services
             {
                 board.Grid[row, col].Visited = true;
 
-                this.moves = board.moves.ToString();
+                this.moveLabel = board.moves.ToString();
 
                 this.bombLabel = board.bombs.ToString();
 
                 loss();
-
             }
         }
 

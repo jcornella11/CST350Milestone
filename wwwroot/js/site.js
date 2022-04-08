@@ -2,6 +2,7 @@
 {
     //Load the Inital Blank Game Board
     updateAllButtons();
+    getGameTableData();
 
     //Left Click
     $(document).on("click", ".game-button", function (event) {
@@ -11,7 +12,6 @@
         var buttonX = $(this).data("valuex");
         var buttonY = $(this).data("valuey");
 
-        
         doButtonUpdate(buttonX, buttonY, buttonCordinates);
         updateAllButtons();
         getGameTableData();
@@ -25,11 +25,9 @@
         var buttonX = $(this).data("valuex");
         var buttonY = $(this).data("valuey");
 
-        console.log(buttonX);
-        console.log(buttonY);
-        
         doButtonRightClick(buttonX, buttonY, buttonCordinates);
         updateAllButtons();
+        getGameTableData();
     });
 });
 

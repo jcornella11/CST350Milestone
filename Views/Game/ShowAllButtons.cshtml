@@ -38,7 +38,7 @@
                         else if (@Model.Grid[@i, @j].LiveNeighbors == 9 && Model.Grid[@i, @j].Visited == true)
                                 {
                                     // Create a Bomb Button
-                                    <button id="@Model.Grid[@i, @j].Row@Model.Grid[@i, @j].Column" class="game-button" type="submit" name="mine"  value="@Model.Grid[@i, @j].Row@Model.Grid[@i, @j].Column" data-valuex="@Model.Grid[@i, @j].Row" data-valuey="@Model.Grid[@i, @j].Column" style="height:50px;width:50px;vertical-align:top;" asp-controller="Game">
+                                    <button id="@Model.Grid[@i, @j].Row@Model.Grid[@i, @j].Column" class="game-button" type="submit" name="mine"  value="@Model.Grid[@i, @j].Row@Model.Grid[@i, @j].Column" data-valuex="@Model.Grid[@i, @j].Row" data-valuey="@Model.Grid[@i, @j].Column" style="height:50px;width:50px;vertical-align:top;" disabled asp-controller="Game">
                                        💣
                                     </button>
                                 }
