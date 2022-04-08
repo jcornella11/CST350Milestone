@@ -19,19 +19,7 @@ namespace CST350Milestone.Controllers
             return View("Index", game.board);
         }
 
-        
-        public IActionResult HandleButtonClick(string mine)
-        {
-            List<string> list = mine.Split(',').ToList<string>();
-            int row = int.Parse(list[0]);
-            int col = int.Parse(list[1]);
-            game.board.floodFill(row, col);
-            game.checkMove(row, col);
-
-            return View("Index", game.board);
-        }
-        
-
+       
         public IActionResult ShowOneButton(int buttonXCordinate, int buttonYCordinate) 
         {
             int row = buttonXCordinate;
@@ -45,14 +33,9 @@ namespace CST350Milestone.Controllers
             return PartialView(currentCell);
         }
 
-        public IActionResult ShowAllButtons(int buttonXCordinate, int buttonYCordinate) 
+        public IActionResult ShowAllButtons() 
         {
-            int row = buttonXCordinate;
-            int col = buttonYCordinate;
-
-            CellModel currentCell = game.board.Grid[row, col];
-
-            return PartialView(currentCell);
+            return PartialView(game.board);
         }
 
         public IActionResult doButtonRightClick(int buttonXCordinate, int buttonYCordinate)

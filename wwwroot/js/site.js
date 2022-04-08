@@ -1,5 +1,8 @@
 ﻿$(function ()
 {
+    //Load the Blank Game Board
+    updateAllButtons();
+
     $(document).on("click", ".game-button", function (event) {
         event.preventDefault();
         
@@ -7,7 +10,7 @@
         var buttonX = $(this).data("valuex");
         var buttonY = $(this).data("valuey");
 
-        updateAllButtons();
+        //updateAllButtons();
         doButtonUpdate(buttonX, buttonY, buttonCordinates);
         getGameTableData();
     });
@@ -20,7 +23,7 @@
         var buttonY = $(this).data("valuey");
         console.log(buttonX);
         console.log(buttonY);
-        updateAllButtons();
+        //updateAllButtons();
         doButtonRightClick(buttonX, buttonY, buttonCordinates);
         
     });
@@ -70,27 +73,21 @@ function doButtonRightClick(buttonX, buttonY, buttonCordinates)
 
 function updateAllButtons()
 {
-    for (let i = 0; i < 10; i++)
-    {
-        for (let j = 0; j < 10; j++)
-        {
+    
             $.ajax({
                 datatype: "json",
                 method: 'POST',
                 url: 'game/ShowAllButtons',
                 data:
                 {
-                    "buttonXCordinate": i,
-                    "buttonYCordinate": j
                 },
                 success: function (data)
                 {
-                    $("#" + i + j).html(data);
+                    $("#gameGrid").html(data);
                 }
 
             });
-        }
-    }
+      
 };
 
 function getGameTableData()
