@@ -18,11 +18,16 @@ namespace CST350Milestone.Services
         public GameService()
         {
             this.playerName = "Test";
-            this.Difficulty = "Easy";
+            this.Difficulty = "Test";
            
             //Setup The Game Based on Difficulty
             switch (Difficulty)
             {
+                case "Test":
+                    board.setupLiveNeighbors(3);
+                    board.calculateLiveNeighbors();
+                    break;
+
                 case "Easy":
                     board.setupLiveNeighbors(10);
                     board.calculateLiveNeighbors();

@@ -5,7 +5,7 @@
         public int Size;
         public CellModel[,] Grid;
         public decimal Difficulty;
-        public decimal bombs;
+        public int bombs;
         public int moves = 0;
 
         public BoardModel(int size)
@@ -29,7 +29,7 @@
                 // Setting difficulty percentage and determining how many live tiles
                 Difficulty = (decimal)difficulty / 100;
                 decimal totalLive = Math.Round(Difficulty * Grid.Length);
-                bombs = totalLive;
+                bombs = (int)totalLive;
 
                 int nowLive = 0;
                 Random random = new Random();
