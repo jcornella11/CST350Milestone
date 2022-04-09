@@ -12,13 +12,14 @@ namespace CST350Milestone.Services
         public string moveLabel = "";
         public string bombLabel = "";
         public string GameResult = "";
+        public string timeLabel = "";
 
         Stopwatch watch = new Stopwatch();
 
         public GameService()
         {
             this.playerName = "Test";
-            this.Difficulty = "Test";
+            this.Difficulty = "VeryEasy";
            
             //Setup The Game Based on Difficulty
             switch (Difficulty)
@@ -44,7 +45,6 @@ namespace CST350Milestone.Services
                     break;
             }
 
-            //this.bombs = (int)board.bombs;
             this.bombLabel = "Bombs Remaining: " + board.bombs.ToString();
 
             watch.Start();
@@ -79,7 +79,6 @@ namespace CST350Milestone.Services
                     break;
             }
 
-            //this.bombs = (int)board.bombs;
             this.bombLabel = "Bombs Remaining: " + board.bombs.ToString();
 
             watch.Start();
@@ -96,6 +95,10 @@ namespace CST350Milestone.Services
                 //If the Square is a Bomb Subtract it from the Total Bomb Count
                 if (board.Grid[row, col].Live == true)
                 {
+                    TimeSpan ts = watch.Elapsed;
+
+                    this.timeLabel = String.Format("Time Elapsed:{0} Minutes:{1} Seconds", ts.Minutes, ts.Seconds);
+
                     this.board.bombs = board.bombs - 1;
 
                     this.bombLabel = "Bombs Remaining: " + board.bombs.ToString();
@@ -110,6 +113,10 @@ namespace CST350Milestone.Services
 
                 if (board.Grid[row, col].Live == true)
                 {
+                    TimeSpan ts = watch.Elapsed;
+
+                    this.timeLabel = String.Format("Time Elapsed:{0} Minutes:{1} Seconds", ts.Minutes, ts.Seconds);
+
                     this.board.bombs = board.bombs + 1;
 
                     this.bombLabel = "Bombs Remaining: " + board.bombs.ToString();
@@ -128,14 +135,20 @@ namespace CST350Milestone.Services
 
                 this.bombLabel = "Bombs Remaining: " + board.bombs.ToString();
 
-                if (board.moves == board.Grid.Length - board.bombs)
+                TimeSpan ts = watch.Elapsed;
+
+                this.timeLabel = String.Format("Time Elapsed:{0} Minutes:{1} Seconds", ts.Minutes, ts.Seconds);
+
+                if (board.moves == board.Grid.Length - board.totalBombs)
                 {
                     victory();
                 }
             }
             else
             {
-                board.Grid[row, col].Visited = true;
+                TimeSpan ts = watch.Elapsed;
+
+                this.timeLabel = String.Format("Time Elapsed:{0} Minutes:{1} Seconds", ts.Minutes, ts.Seconds);
 
                 this.moveLabel = board.moves.ToString();
 
@@ -164,6 +177,11 @@ namespace CST350Milestone.Services
 
             switch (Difficulty)
             {
+                case "VeryEasy":
+                    score += 10000;
+                    score -= (int)ts.TotalSeconds * 100;
+                    break;
+
                 case "Easy":
                     score += 10000;
                     score -= (int)ts.TotalSeconds * 100;

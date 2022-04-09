@@ -6,6 +6,7 @@
         public CellModel[,] Grid;
         public decimal Difficulty;
         public int bombs;
+        public int totalBombs;
         public int moves = 0;
 
         public BoardModel(int size)
@@ -30,6 +31,7 @@
                 Difficulty = (decimal)difficulty / 100;
                 decimal totalLive = Math.Round(Difficulty * Grid.Length);
                 bombs = (int)totalLive;
+                this.totalBombs = (int)totalLive;
 
                 int nowLive = 0;
                 Random random = new Random();
