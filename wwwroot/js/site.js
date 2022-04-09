@@ -4,7 +4,7 @@
     updateAllButtons();
     getGameTableData();
 
-    //Left Click
+    //Left Click on Game Button
     $(document).on("click", ".game-button", function (event) {
         event.preventDefault();
         
@@ -17,7 +17,7 @@
         getGameTableData();
     });
 
-    //Right Click
+    //Right Click on Game Button
     $(document).on("contextmenu", ".game-button", function (event) {
         event.preventDefault();
 
@@ -29,9 +29,33 @@
         updateAllButtons();
         getGameTableData();
     });
+
+    //Triggered After Game Difficulty is Selected
+    $(document).ready(function () {
+        $("#newgame").click(function () {
+            var gameDifficulty = $("input[name='gameDifficulty']:checked").val();
+
+            $.ajax(
+                {
+                    datatype: "json",
+                    method: 'POST',
+                    url: 'game/NewGame',
+                   data:
+                    {
+                        "difficulty": gameDifficulty
+                    },
+                    success: function () {
+                        updateAllButtons();
+                        getGameTableData();
+                    }
+                });
+            console.log(gameDifficulty);
+        });
+    });
+
 });
 
-
+//Ajax to Show One Button
 function doButtonUpdate(buttonX, buttonY, buttonCordinates)
 {
     $.ajax(
@@ -42,7 +66,7 @@ function doButtonUpdate(buttonX, buttonY, buttonCordinates)
             data:
             {
                 "buttonXCordinate": buttonX,
-                "buttonYCordinate": buttonY
+               "buttonYCordinate": buttonY
             },
             success: function (data) {
                 $("#" + buttonCordinates).html(data);
@@ -50,7 +74,7 @@ function doButtonUpdate(buttonX, buttonY, buttonCordinates)
         });
 };
 
-
+//Right Click and Flag One Button
 function doButtonRightClick(buttonX, buttonY, buttonCordinates)
 {
     $.ajax(
@@ -68,6 +92,7 @@ function doButtonRightClick(buttonX, buttonY, buttonCordinates)
             }
         });
 }
+
 
 function updateAllButtons()
 {

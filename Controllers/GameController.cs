@@ -54,5 +54,11 @@ namespace CST350Milestone.Controllers
         {
             return PartialView(game);
         }
+
+        public void NewGame(string difficulty)
+        {
+            game.reset();
+            game.GameSetup(difficulty);
+        }
     }
 }

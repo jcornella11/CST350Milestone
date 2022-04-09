@@ -23,8 +23,8 @@ namespace CST350Milestone.Services
             //Setup The Game Based on Difficulty
             switch (Difficulty)
             {
-                case "Test":
-                    board.setupLiveNeighbors(3);
+                case "VeryEasy":
+                    board.setupLiveNeighbors(5);
                     board.calculateLiveNeighbors();
                     break;
 
@@ -34,12 +34,47 @@ namespace CST350Milestone.Services
                     break;
 
                 case "Medium":
-                    board.setupLiveNeighbors(25);
+                    board.setupLiveNeighbors(15);
                     board.calculateLiveNeighbors();
                     break;
 
                 case "Hard":
-                    board.setupLiveNeighbors(50);
+                    board.setupLiveNeighbors(20);
+                    board.calculateLiveNeighbors();
+                    break;
+            }
+
+            //this.bombs = (int)board.bombs;
+            this.bombLabel = "Bombs Remaining: " + board.bombs.ToString();
+
+            watch.Start();
+        }
+
+        public void GameSetup(string difficulty)
+        {
+            this.playerName = "Test";
+            this.Difficulty = difficulty;
+
+            //Setup The Game Based on Difficulty
+            switch (Difficulty)
+            {
+                case "VeryEasy":
+                    board.setupLiveNeighbors(5);
+                    board.calculateLiveNeighbors();
+                    break;
+
+                case "Easy":
+                    board.setupLiveNeighbors(10);
+                    board.calculateLiveNeighbors();
+                    break;
+
+                case "Medium":
+                    board.setupLiveNeighbors(15);
+                    board.calculateLiveNeighbors();
+                    break;
+
+                case "Hard":
+                    board.setupLiveNeighbors(20);
                     board.calculateLiveNeighbors();
                     break;
             }
@@ -151,7 +186,7 @@ namespace CST350Milestone.Services
             return 0;
         }
 
-        private void reset()
+        public void reset()
         {
             board.moves = 0;
             board.bombs = 0;
