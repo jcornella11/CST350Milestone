@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using CST350Milestone.Services;
+using Nancy.Json;
+using Newtonsoft.Json;
 
 namespace CST350Milestone.Controllers
 {
@@ -59,6 +61,14 @@ namespace CST350Milestone.Controllers
         {
             game.reset();
             game.GameSetup(difficulty);
+        }
+
+        public string SaveGame() {
+
+           List <BoardModel> games = new List <BoardModel>();
+           games.Add(game.board);
+           string output = JsonConvert.SerializeObject(games);
+           return output;
         }
     }
 }

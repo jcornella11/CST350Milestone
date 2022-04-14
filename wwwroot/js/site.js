@@ -30,7 +30,7 @@
         getGameTableData();
     });
 
-    //Triggered After Game Difficulty is Selected
+    //New Game Triggered After Game Difficulty is Selected
     $(document).ready(function () {
         $("#newgame").click(function () {
             var gameDifficulty = $("input[name='gameDifficulty']:checked").val();
@@ -50,6 +50,47 @@
                     }
                 });
             console.log(gameDifficulty);
+        });
+    });
+
+    $(document).ready(function () {
+        $("#savegame").click(function () {
+            
+            $.ajax(
+                {
+                    datatype: "json",
+                    method: 'POST',
+                    url: 'game/SaveGame',
+                    data:
+                    {
+                       
+                    },
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
+           
+        });
+    });
+
+    $(document).ready(function () {
+        $("#loadgame").click(function () {
+            
+
+            $.ajax(
+                {
+                    datatype: "json",
+                    method: 'POST',
+                    url: 'game/LoadGame',
+                    data:
+                    {
+                        
+                    },
+                    success: function () {
+                       
+                    }
+                });
+            
         });
     });
 
