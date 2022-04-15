@@ -1,0 +1,1 @@
+﻿ INSERT INTO dbo.games (firstName, lastName, gameData) VALUES ('firstName', 'lastName', 'gameData')

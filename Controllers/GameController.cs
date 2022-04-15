@@ -11,9 +11,11 @@ namespace CST350Milestone.Controllers
     {
         public static GameService game = new GameService();
 
+        GameDAO games = new GameDAO();
+
         public GameController()
         {
-
+            games = new GameDAO();
         }
 
         public IActionResult Index()
@@ -63,12 +65,20 @@ namespace CST350Milestone.Controllers
             game.GameSetup(difficulty);
         }
 
-        public string SaveGame() {
+        public void SaveGame() {
 
-           List <BoardModel> games = new List <BoardModel>();
-           games.Add(game.board);
-           string output = JsonConvert.SerializeObject(games);
-           return output;
+        DateTime gameTime = DateTime.Now;
+
+        string firstName = "Johnathan";
+
+        string lastName = "Cornella";
+
+        string gameData = JsonConvert.SerializeObject(game.board);
+
+        GameModel thisgame = new GameModel(1, gameTime, firstName, lastName, gameData);
+
+        games.Insert(thisgame);
+
         }
     }
 }

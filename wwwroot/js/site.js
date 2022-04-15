@@ -65,8 +65,7 @@
                     {
                        
                     },
-                    success: function (data) {
-                        console.log(data);
+                    success: function () {
                     }
                 });
            
