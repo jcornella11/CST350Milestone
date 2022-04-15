@@ -1,1 +1,1 @@
-﻿ INSERT INTO dbo.games (firstName, lastName, gameData) VALUES ('firstName', 'lastName', 'gameData')
+﻿DELETE * FROM dbo.games WHERE Id = 1

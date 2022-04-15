@@ -26,6 +26,12 @@ namespace CST350Milestone.Controllers
         {
             return games.GetGameById(Id);
         }
-        
+
+        [HttpGet("deleteOneGame/{Id}")]
+        public ActionResult<IEnumerable<GameModel>> DeleteOneGame(int Id) 
+        {
+            games.Delete(Id);
+            return games.AllGames();
+        }
     }
 }

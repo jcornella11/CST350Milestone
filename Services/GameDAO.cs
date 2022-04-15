@@ -8,8 +8,6 @@ namespace CST350Milestone.Services
         string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = Test; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         //Shows all Saved Games
-
-        
         public List<GameModel> AllGames() 
         {
             List<GameModel> foundGames = new List<GameModel>();
@@ -41,7 +39,6 @@ namespace CST350Milestone.Services
         }
 
         //Displays Content of a Single Game Specified by Id
-
         public GameModel GetGameById(int id) 
         {
             GameModel foundGame = null;
@@ -72,6 +69,30 @@ namespace CST350Milestone.Services
             }
             return foundGame;
         }
+
+        //Delete a Game from the Database Specified by Id
+        public void Delete(int id) 
+        {
+            string sqlStatement = "DELETE FROM dbo.games WHERE Id = @id";
+
+            using (SqlConnection connection = new SqlConnection(connectionString)) 
+            {
+                SqlCommand command = new SqlCommand(@sqlStatement, connection);
+
+                command.Parameters.AddWithValue("@id", id);
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex) 
+                {
+                    Console.Write(ex.Message);
+                }
+            }
+        }
+
 
         //Inserts a New Game Into the Database
         public void Insert(GameModel game) 
