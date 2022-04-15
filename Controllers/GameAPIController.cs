@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CST350Milestone.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/")]
     public class GameAPIController : ControllerBase
     {
         public static GameDAO games = new GameDAO();
@@ -14,8 +14,6 @@ namespace CST350Milestone.Controllers
         {
             games = new GameDAO();
         }
-
-        /*
 
         [HttpGet("showSavedGames")]
         public ActionResult <IEnumerable<GameModel>> Index()
@@ -28,13 +26,6 @@ namespace CST350Milestone.Controllers
         {
             return games.GetGameById(Id);
         }
-
-        [HttpPut("processinput")]
-        public ActionResult<IEnumerable<GameModel>> GameInput(GameModel game) 
-        {
-            games.Insert(game);
-            return games.AllGames();
-        }
-        */
+        
     }
 }
