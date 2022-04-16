@@ -1,0 +1,27 @@
+﻿@model List<CST350Milestone.Models.GameModel>
+
+<div>
+	<table>
+		<tr>
+			<th>Id Number</th>
+			<th>Game Time</th>
+			<th>Player First Name</th>
+			<th>Player Last Name</th>
+			<th>Load Game</th>
+			<th>Delete Game</th>
+		</tr>
+
+@foreach (var allgames in Model){
+
+		<tr>
+			<td>@allgames.Id</td>
+			<td>@allgames.gameTime</td>
+			<td>@allgames.firstName</td>
+			<td>@allgames.lastName</td>
+			<td><button type="button" id="@allgames.Id" class="btn btn btn-success">Load Game</button></td>
+			<td><button type="button" id="@allgames.Id" class="btn btn-danger">Delete Game</button></td>
+		</tr>
+}
+
+</table>
+</div>

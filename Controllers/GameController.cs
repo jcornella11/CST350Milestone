@@ -11,6 +11,8 @@ namespace CST350Milestone.Controllers
     {
         public static GameService game = new GameService();
 
+        List<GameModel> allgames = new List<GameModel>();
+
         GameDAO games = new GameDAO();
 
         public GameController()
@@ -65,7 +67,7 @@ namespace CST350Milestone.Controllers
             game.GameSetup(difficulty);
         }
 
-        public void SaveGame() {
+        public IActionResult SaveGame() {
 
         DateTime gameTime = DateTime.Now;
 
@@ -78,6 +80,10 @@ namespace CST350Milestone.Controllers
         GameModel thisgame = new GameModel(1, gameTime, firstName, lastName, gameData);
 
         games.Insert(thisgame);
+
+        this.allgames = games.AllGames();
+
+        return PartialView(allgames);
 
         }
     }

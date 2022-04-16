@@ -65,7 +65,9 @@
                     {
                        
                     },
-                    success: function () {
+                    success: function (data)
+                    {
+                        $("#savedgametable").html(data);
                     }
                 });
            
