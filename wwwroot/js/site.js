@@ -97,6 +97,31 @@
                     });
     });
 
+    //Delete Function Triggered when button is pressed
+    $("#savedgametable").on('click', 'td', function () {
+
+        var buttonId = $("#deletegame").val();
+        console.log(buttonId);
+
+        $.ajax(
+            {
+                datatype: "json",
+                method: 'POST',
+                url: 'game/DeleteGame',
+                data:
+                {
+                    "id": buttonId
+                },
+                success: function (data) {
+                    $("#savedgametable").html(data);
+                    updateAllButtons();
+                    getGameTableData();
+                }
+            });
+    });
+
+
+
 });
 
 //Ajax to Show One Button

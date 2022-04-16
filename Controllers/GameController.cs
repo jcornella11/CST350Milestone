@@ -95,5 +95,14 @@ namespace CST350Milestone.Controllers
 
             game.board = savedboard;
         }
+
+        public IActionResult DeleteGame(int Id) 
+        {
+            games.Delete(Id);
+
+            this.allgames = games.AllGames();
+
+            return PartialView(allgames);
+        }
     }
 }
