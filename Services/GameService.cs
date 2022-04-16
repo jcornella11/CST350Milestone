@@ -219,6 +219,10 @@ namespace CST350Milestone.Services
                     board.Grid[r, c].flagged = false;
                 }
             }
+        moveLabel = "";
+        bombLabel = "";
+        GameResult = "";
+        timeLabel = "";
         }
     }
 }
