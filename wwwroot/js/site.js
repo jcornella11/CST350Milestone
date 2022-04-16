@@ -53,9 +53,10 @@
         });
     });
 
+    //Save Function Triggered When Button is Pressed
     $(document).ready(function () {
         $("#savegame").click(function () {
-            
+  
             $.ajax(
                 {
                     datatype: "json",
@@ -63,7 +64,7 @@
                     url: 'game/SaveGame',
                     data:
                     {
-                       
+                        
                     },
                     success: function (data)
                     {
@@ -74,25 +75,26 @@
         });
     });
 
-    $(document).ready(function () {
-        $("#loadgame").click(function () {
-            
+    //Load Function Triggered when button is pressed
+    $("#savedgametable").on('click','td', function () {
 
-            $.ajax(
-                {
-                    datatype: "json",
-                    method: 'POST',
-                    url: 'game/LoadGame',
-                    data:
-                    {
-                        
-                    },
-                    success: function () {
-                       
-                    }
-                });
+            var buttonId = $("#loadgame").val();
+            console.log(buttonId);
             
-        });
+                $.ajax(
+                    {
+                        datatype: "json",
+                        method: 'POST',
+                        url: 'game/LoadGame',
+                        data:
+                        {
+                            "id": buttonId
+                        },
+                        success: function () {
+                            updateAllButtons();
+                            getGameTableData();
+                        }
+                    });
     });
 
 });
@@ -107,7 +109,7 @@ function doButtonUpdate(buttonX, buttonY, buttonCordinates)
             url: 'game/ShowOneButton',
             data:
             {
-                "buttonXCordinate": buttonX,
+               "buttonXCordinate": buttonX,
                "buttonYCordinate": buttonY
             },
             success: function (data) {

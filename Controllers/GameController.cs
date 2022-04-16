@@ -86,5 +86,14 @@ namespace CST350Milestone.Controllers
         return PartialView(allgames);
 
         }
+
+        public void LoadGame(int Id) 
+        {
+            GameModel selectedgame = games.GetGameById(Id);
+
+            BoardModel savedboard = JsonConvert.DeserializeObject<BoardModel>(selectedgame.gameData);
+
+            game.board = savedboard;
+        }
     }
 }
