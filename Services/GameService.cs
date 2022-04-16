@@ -216,6 +216,7 @@ namespace CST350Milestone.Services
                     board.Grid[r, c].LiveNeighbors = 0;
                     board.Grid[r, c].Live = false;
                     board.Grid[r, c].Visited = false;
+                    board.Grid[r, c].flagged = false;
                 }
             }
         }
