@@ -5,7 +5,12 @@ namespace CST350Milestone.Services
 {
     public class GameDAO
     {
+        /*
         string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = Test; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        */
+
+        //Update for Azure
+        string connectionString = @"Data Source = cst350milestonedbserver.database.windows.net;Initial Catalog = CST350Milestone_db; User ID = jcornella11; Password=jabajo11051hBYC!2;Connect Timeout = 60; Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         //Shows all Saved Games
         public List<GameModel> AllGames() 

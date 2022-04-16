@@ -5,8 +5,12 @@ namespace CST350Milestone.Services
 {
     public class SecurityDAO
     {
-
+        /*
         string connectionString = "Data Source=(localdb)\\ProjectModels;Initial Catalog=Login;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        */
+
+        //Update for Azure
+        string connectionString = @"Data Source = cst350milestonedbserver.database.windows.net;Initial Catalog = CST350Milestone_db; User ID = jcornella11; Password=jabajo11051hBYC!2;Connect Timeout = 60; Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         public bool InsertNewUser(UserModel user)
         {
